@@ -36,7 +36,7 @@ interface ThemeModeProviderProps {
 }
 
 export const ThemeModeProvider = ({ children }: ThemeModeProviderProps) => {
-  const [mode, setMode] = useState<ThemeMode>("light");
+  const [mode, setMode] = useState<ThemeMode>("dark");
 
   const toggleTheme = () => {
     setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
