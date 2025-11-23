@@ -16,7 +16,7 @@ const HomePage = () => {
       </Box>
       {/* درباره */}
       <Box sx={{ minHeight: "100vh", py: 4 }}>
-        <Typography variant="h3" sx={{ textAlign: "center", mb: 4 }}>
+        <Typography variant="h3" sx={{ textAlign: "-moz-left", mb: 4 }}>
           درباره ما
         </Typography>
         <AboutMe />
