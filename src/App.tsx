@@ -1,7 +1,16 @@
-import { Box } from "@mui/material";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HomePage from "./home/Home";
+import Header from "./components/header/Header";
 
 const App = () => {
-  return <Box>App</Box>;
+  return (
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default App;
