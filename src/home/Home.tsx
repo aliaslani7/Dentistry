@@ -1,9 +1,14 @@
 import { Box, Typography } from "@mui/material";
+import Cards from "../pages/cards/Cards";
 
 const HomePage = () => {
   return (
     <Box>
-      <Typography></Typography>
+      {/* خدمات */}
+      <Box>
+        <Typography variant="h3">خدمات</Typography>
+        <Cards />
+      </Box>
     </Box>
   );
 };
