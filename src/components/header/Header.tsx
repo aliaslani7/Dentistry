@@ -1,21 +1,41 @@
-import { Box, Divider, Typography } from "@mui/material";
+import {
+  Box,
+  Divider,
+  Typography,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 import gsap from "gsap";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import ThemeToggleSwitch from "../themeToggleSwitch/ThemeToggleSwitch";
+
 interface headerItemsType {
   id: number;
   title: string;
   link?: string;
 }
+
 const headerItems: headerItemsType[] = [
   { id: 1, title: "صفحه اصلی" },
   { id: 2, title: "درباره ما" },
   { id: 3, title: "خدمات" },
   { id: 4, title: "ارتباط با ما" },
 ];
+
 const Header = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const menuItemsRef = useRef<(HTMLDivElement | null)[]>([]);
+
   const handleMouseEnter = (index: number) => {
+    if (isMobile) return;
     const wrapper = menuItemsRef.current[index];
     if (wrapper) {
       const originalText = wrapper.querySelector(".original-text");
@@ -38,7 +58,9 @@ const Header = () => {
       );
     }
   };
+
   const handleMouseLeave = (index: number) => {
+    if (isMobile) return;
     const wrapper = menuItemsRef.current[index];
     if (wrapper) {
       const originalText = wrapper.querySelector(".original-text");
@@ -57,6 +79,11 @@ const Header = () => {
       });
     }
   };
+
+  const toggleDrawer = (open: boolean) => () => {
+    setDrawerOpen(open);
+  };
+
   return (
     <Box
       display={"flex"}
@@ -64,6 +91,10 @@ const Header = () => {
       alignContent={"center"}
       alignItems={"center"}
       justifyContent={"space-between"}
+      sx={{
+        px: { xs: 2, md: 0 },
+        py: { xs: 1.5, md: 0 },
+      }}
     >
       <Box
         display={"flex"}
@@ -77,48 +108,73 @@ const Header = () => {
           <Typography variant="h6" fontWeight={700}>
             Dentistry
           </Typography>
-          <Divider orientation="vertical" flexItem sx={{borderWidth:1}} />
+          {!isMobile && (
+            <Divider orientation="vertical" flexItem sx={{ borderWidth: 1 }} />
+          )}
         </Box>
 
-        {/* menuItems */}
-        {headerItems?.map((item, index) => (
-          <Box
-            key={item.id}
-            ref={(el: HTMLDivElement | null) => {
-              menuItemsRef.current[index] = el;
-            }}
-            onMouseEnter={() => handleMouseEnter(index)}
-            onMouseLeave={() => handleMouseLeave(index)}
-            sx={{
-              userSelect: "none",
-              position: "relative",
-              overflow: "hidden",
-              cursor: "pointer",
-            }}
-          >
-            <Typography className="original-text" sx={{ display: "block" }}>
-              {item.title}
-            </Typography>
-            <Typography
-              className="clone-text"
+        {/* menuItems - Desktop */}
+        {!isMobile &&
+          headerItems?.map((item, index) => (
+            <Box
+              key={item.id}
+              ref={(el: HTMLDivElement | null) => {
+                menuItemsRef.current[index] = el;
+              }}
+              onMouseEnter={() => handleMouseEnter(index)}
+              onMouseLeave={() => handleMouseLeave(index)}
               sx={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                right: 0,
-                display: "block",
-                transform: "translateY(100%)",
+                userSelect: "none",
+                position: "relative",
+                overflow: "hidden",
+                cursor: "pointer",
               }}
             >
-              {item.title}
-            </Typography>
-          </Box>
-        ))}
+              <Typography className="original-text" sx={{ display: "block" }}>
+                {item.title}
+              </Typography>
+              <Typography
+                className="clone-text"
+                sx={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  display: "block",
+                  transform: "translateY(100%)",
+                }}
+              >
+                {item.title}
+              </Typography>
+            </Box>
+          ))}
       </Box>
 
-      <Box>
+      <Box display="flex" alignItems="center" gap={1}>
         <ThemeToggleSwitch />
+        {isMobile && (
+          <IconButton onClick={toggleDrawer(true)} color="inherit">
+            <MenuIcon />
+          </IconButton>
+        )}
       </Box>
+
+      {/* Mobile Drawer */}
+      <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
+        <Box
+          sx={{ width: 250, pt: 2 }}
+          role="presentation"
+          onClick={toggleDrawer(false)}
+        >
+          <List>
+            {headerItems.map((item) => (
+              <ListItem key={item.id} sx={{ cursor: "pointer" }}>
+                <ListItemText primary={item.title} />
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+      </Drawer>
     </Box>
   );
 };
