@@ -4,6 +4,9 @@ import dr2 from "../../assets/images/dr-2.png";
 const AboutMe = () => {
   return (
     <Box width="100%" height={900}>
+      
+
+
       <Box
         display="flex"
         alignItems="center"
@@ -31,9 +34,6 @@ const AboutMe = () => {
           </Typography>
         </Box>
       </Box>
-
-
-
 
       <Box
         display="flex"
