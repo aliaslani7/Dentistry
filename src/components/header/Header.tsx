@@ -61,7 +61,6 @@ const Header = () => {
     <Box
       display={"flex"}
       flexDirection={"row"}
-      gap={2}
       alignContent={"center"}
       alignItems={"center"}
       justifyContent={"space-between"}
