@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 
 const AboutMe = () => {
   return (
-    <Box>
+    <Box width="100%" height={900}>
       <Typography>About Me</Typography>
     </Box>
   );
