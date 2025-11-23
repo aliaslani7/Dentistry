@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 
 const Footer = () => {
   return (
-    <Box>
+    <Box height={700}>
       <Typography>Footer Section</Typography>
     </Box>
   );

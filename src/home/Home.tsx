@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import Cards from "../pages/cards/Cards";
 import Hero from "../pages/hero/Hero";
 import AboutMe from "../pages/aboutMe/AboutMe";
+import Footer from "../components/footer/Footer";
 
 const HomePage = () => {
   return (
@@ -20,6 +21,9 @@ const HomePage = () => {
           درباره ما
         </Typography>
         <AboutMe />
+      </Box>
+      <Box>
+        <Footer />
       </Box>
     </Box>
   );
