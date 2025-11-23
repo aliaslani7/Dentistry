@@ -1,3 +1,12 @@
+// --- Add custom palette type for footerBg ---
+declare module "@mui/material/styles" {
+  interface Palette {
+    footerBg: string;
+  }
+  interface PaletteOptions {
+    footerBg?: string;
+  }
+}
 import { createContext, useContext, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -6,6 +15,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import rtlPlugin from "stylis-plugin-rtl";
 import { prefixer } from "stylis";
 import createCache from "@emotion/cache";
+import { grey } from "@mui/material/colors";
 
 const cacheRtl = createCache({
   key: "muirtl",
@@ -48,6 +58,7 @@ export const ThemeModeProvider = ({ children }: ThemeModeProviderProps) => {
         direction: "rtl",
         palette: {
           mode,
+          footerBg: mode === "dark" ? grey[900] : grey[100],
         },
         typography: {
           fontFamily: "'IRANSans', sans-serif",

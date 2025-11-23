@@ -22,7 +22,7 @@ const HomePage = () => {
         </Typography>
         <AboutMe />
       </Box>
-      <Box>
+      <Box p={10} pb={12}>
         <Footer />
       </Box>
     </Box>
