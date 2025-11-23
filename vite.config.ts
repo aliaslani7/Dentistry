@@ -1,31 +1,19 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-// import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/Dentistry/", // اضافه برای GitHub Pages
+  base: "/", // ← مهم، برای Local Dev مسیر root باشه
   plugins: [
     react(),
-
-    // ❗ image optimizer باعث خطای sharp میشه، پس در محیط GH Pages غیرفعال:
-    // فقط اگر فقط روی local میخوای فعال باشه:
-    // ...(process.env.NODE_ENV === "production"
-    //   ? []
-    //   : [
-    //       ViteImageOptimizer({
-    //         jpg: { quality: 80 },
-    //         jpeg: { quality: 80 },
-    //         png: { quality: 80 },
-    //         webp: { quality: 80 },
-    //       }),
-    //     ]),
+    // ❌ Image optimizer رو الان حذف کردیم چون Local Dev هست
   ],
 
   server: {
     hmr: {
-      overlay: false,
+      overlay: false, // ارور HMR روی صفحه نشون داده نشه
     },
+    port: 5173, // میتونی تغییر بدی اگر میخوای
   },
 
   optimizeDeps: {
