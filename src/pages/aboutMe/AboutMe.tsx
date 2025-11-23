@@ -1,9 +1,50 @@
 import { Box, Typography } from "@mui/material";
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import dr1 from "../../assets/images/dr-1.png";
 import dr2 from "../../assets/images/dr-2.png";
 import matab1 from "../../assets/images/Matab-A.jpg";
 import matab2 from "../../assets/images/Matab-B.jpg";
+
+gsap.registerPlugin(ScrollTrigger);
 const AboutMe = () => {
+  const dr1ImgRef = useRef(null);
+  const dr2ImgRef = useRef(null);
+
+  useEffect(() => {
+    if (dr1ImgRef.current) {
+      gsap.fromTo(
+        dr1ImgRef.current,
+        { x: 100 },
+        {
+          x: 0,
+          scrollTrigger: {
+            trigger: dr1ImgRef.current,
+            start: "top 80%",
+            end: "top 20%",
+            scrub: 1,
+          },
+        }
+      );
+    }
+    if (dr2ImgRef.current) {
+      gsap.fromTo(
+        dr2ImgRef.current,
+        { x: -100 },
+        {
+          x: 0,
+          scrollTrigger: {
+            trigger: dr2ImgRef.current,
+            start: "top 80%",
+            end: "top 20%",
+            scrub: 1,
+          },
+        }
+      );
+    }
+  }, []);
+
   return (
     <Box width="100%" sx={{ py: { xs: 4, md: 8 } }}>
       {/* دکتر اول - عکس چپ */}
@@ -29,9 +70,15 @@ const AboutMe = () => {
           }}
         >
           <img
+            ref={dr1ImgRef}
             src={dr1}
             alt="About Me"
-            style={{ width: "100%", maxWidth: "300px", height: "auto" ,marginRight:"500px"}}
+            style={{
+              width: "100%",
+              maxWidth: "300px",
+              height: "auto",
+              marginRight: "500px",
+            }}
           />
         </Box>
         <Box sx={{ width: { xs: "100%", md: 700 }, maxWidth: "100%" }}>
@@ -65,15 +112,18 @@ const AboutMe = () => {
           py: 4,
         }}
       >
-        <Box           sx={{
+        <Box
+          sx={{
             flexShrink: 0,
             backgroundImage: `url(${matab2})`,
             backgroundSize: "cover",
             width: "100%",
             maxWidth: "800px",
             height: "250px",
-          }}>
+          }}
+        >
           <img
+            ref={dr2ImgRef}
             src={dr2}
             alt="About Me"
             style={{ width: "100%", maxWidth: "300px", height: "auto" }}

@@ -71,9 +71,11 @@ const ReservationForm = () => {
           minRows={4}
         />
       </Box>
-      <Button variant="contained" color="primary">
-        ثبت
-      </Button>
+      <Box mt={2}>
+        <Button variant="contained" color="inherit" fullWidth size="large">
+          ثبت
+        </Button>
+      </Box>
     </Box>
   );
 };

@@ -2,7 +2,8 @@ import { Box, Typography } from "@mui/material";
 import Cards from "../pages/cards/Cards";
 import Hero from "../pages/hero/Hero";
 import AboutMe from "../pages/aboutMe/AboutMe";
-import Footer from "../components/footer/Footer";
+// import Footer from "../components/footer/Footer";
+import SocialMedia from "../components/footer/SocialMedia";
 
 const HomePage = () => {
   return (
@@ -22,8 +23,11 @@ const HomePage = () => {
         </Typography>
         <AboutMe />
       </Box>
-      <Box p={10} pb={12}>
+      {/* <Box p={10} pb={12}>
         <Footer />
+      </Box> */}
+      <Box pt={10} textAlign={"center"}>
+        <SocialMedia />
       </Box>
     </Box>
   );

@@ -23,8 +23,8 @@ interface headerItemsType {
 
 const headerItems: headerItemsType[] = [
   { id: 1, title: "صفحه اصلی" },
-  { id: 2, title: "درباره ما" },
-  { id: 3, title: "خدمات" },
+  { id: 2, title: "خدمات" },
+  { id: 3, title: "درباره ما" },
   { id: 4, title: "ارتباط با ما" },
 ];
 
