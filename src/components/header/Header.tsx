@@ -77,7 +77,7 @@ const Header = () => {
           <Typography variant="h6" fontWeight={700}>
             Dentistry
           </Typography>
-          <Divider orientation="vertical" flexItem />
+          <Divider orientation="vertical" flexItem sx={{borderWidth:1}} />
         </Box>
 
         {/* menuItems */}
