@@ -151,6 +151,8 @@ const Hero = () => {
             backgroundClip: "text",
             WebkitBackgroundClip: "text",
             mixBlendMode: "overlay",
+            userSelect: "none",
+            // color: "transparent",
           }}
         >
           Dentistry
