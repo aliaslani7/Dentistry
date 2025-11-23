@@ -142,9 +142,16 @@ const Hero = () => {
           variant="h1"
           sx={{
             fontWeight: 700,
-            fontSize: { xs: "4rem", sm: "6rem", md: "8rem", lg: "20rem" },
-            width: "100%",
-            letterSpacing: { xs: "0.5rem", md: "1rem" },
+            fontSize: {
+              xs: "2.5rem",
+              sm: "4rem",
+              md: "7rem",
+              lg: "12rem",
+              xl: "16rem",
+            },
+            width: { xs: "100%", sm: "100%", md: "auto" },
+            maxWidth: { xs: "100vw", sm: "100vw", md: "90vw" },
+            letterSpacing: { xs: "0.2rem", sm: "0.5rem", md: "1rem" },
             background: `url(${homeHero})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
@@ -153,6 +160,14 @@ const Hero = () => {
             mixBlendMode: "overlay",
             userSelect: "none",
             // color: "transparent",
+            overflowWrap: "break-word",
+            wordBreak: "break-word",
+            lineHeight: 1.1,
+            whiteSpace: { xs: "normal", md: "nowrap" },
+            textShadow: {
+              xs: "0 2px 8px rgba(0,0,0,0.25)",
+              md: "0 4px 24px rgba(0,0,0,0.25)",
+            },
           }}
         >
           Dentistry
