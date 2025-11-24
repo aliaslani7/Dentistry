@@ -2,10 +2,16 @@ import { Box, Typography } from "@mui/material";
 import Cards from "../pages/cards/Cards";
 import Hero from "../pages/hero/Hero";
 import AboutMe from "../pages/aboutMe/AboutMe";
-// import Footer from "../components/footer/Footer";
-import SocialMedia from "../components/footer/SocialMedia";
+import Footer from "../components/footer/Footer";
+import ReservationForm from "../components/footer/reservationForm/ReservationForm";
+import { useRef } from "react";
+import { useGsapBgColorOnScroll } from "../pages/cards/useGsapBgColorOnScroll";
+import { teal } from "@mui/material/colors";
 
 const HomePage = () => {
+  const cardsSectionRef = useRef<HTMLDivElement>(null);
+  // رنگ اولیه و رنگ مقصد را اینجا تنظیم کن
+  useGsapBgColorOnScroll(cardsSectionRef, teal[900], "");
   return (
     <Box>
       {/* Hero Section */}
@@ -13,7 +19,7 @@ const HomePage = () => {
         <Hero />
       </Box>
       {/* خدمات */}
-      <Box>
+      <Box ref={cardsSectionRef} sx={{ transition: "background 0.4s" }}>
         <Cards />
       </Box>
       {/* درباره */}
@@ -23,11 +29,12 @@ const HomePage = () => {
         </Typography>
         <AboutMe />
       </Box>
-      {/* <Box p={10} pb={12}>
+
+      <Box>
+        <ReservationForm />
+      </Box>
+      <Box pt={10}>
         <Footer />
-      </Box> */}
-      <Box pt={10} textAlign={"center"}>
-        <SocialMedia />
       </Box>
     </Box>
   );
