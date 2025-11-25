@@ -10,7 +10,6 @@ import { teal } from "@mui/material/colors";
 
 const HomePage = () => {
   const cardsSectionRef = useRef<HTMLDivElement>(null);
-  // رنگ اولیه و رنگ مقصد را اینجا تنظیم کن
   useGsapBgColorOnScroll(cardsSectionRef, teal[900], "");
   return (
     <Box>
