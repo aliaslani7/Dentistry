@@ -16,6 +16,7 @@ import { useRef } from "react";
 // import { grey, teal } from "@mui/material/colors";
 
 import { useEffect } from "react";
+import Descriptions from "../pages/descriptions/Descriptions";
 const HomePage = () => {
   const homeSectionRef = useRef<HTMLDivElement>(null);
   const cardsSectionRef = useRef<HTMLDivElement>(null);
@@ -42,11 +43,12 @@ const HomePage = () => {
         <Cards />
       </Box>
       {/* درباره */}
-      <Box ref={aboutSectionRef} sx={{ minHeight: "100vh", py: 4 }}>
-        <Typography variant="h3" sx={{ textAlign: "-moz-left", mb: 4 }}>
+      <Box ref={aboutSectionRef} sx={{ minHeight: "100vh", py: 10 }}>
+        <Typography variant="h3" sx={{ textAlign: "-moz-left" }}>
           درباره ما
         </Typography>
         <AboutMe />
+        <Descriptions/>
       </Box>
 
       <Box ref={contactSectionRef}>

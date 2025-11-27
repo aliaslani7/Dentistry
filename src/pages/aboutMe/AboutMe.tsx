@@ -44,7 +44,7 @@ const AboutMe = () => {
   }, []);
 
   return (
-    <Box width="100%" sx={{ py: { xs: 4, md: 8 } }}>
+    <Box width="100%" >
       {/* دکتر اول - عکس چپ */}
       <Box
         sx={{
