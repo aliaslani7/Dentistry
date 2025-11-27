@@ -10,52 +10,40 @@ gsap.registerPlugin(ScrollTrigger);
 const Descriptions = () => {
   const imgBoxRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
-  //   const [showText, setShowText] = useState(false);
   const textRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!imgBoxRef.current || !sectionRef.current) return;
-    const img = imgBoxRef.current;
-    const section = sectionRef.current;
-    const text = textRef.current;
+    const ctx = gsap.context(() => {
+      if (!imgBoxRef.current || !sectionRef.current || !textRef.current) return;
 
-    gsap.fromTo(
-      img,
-      { scale: 1 },
-      {
-        scale: 1.2,
+      const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: section,
-          start: "top 2%",
-          end: "+=60%",
-          scrub: 2,
-          pin: img,
+          trigger: sectionRef.current,
+          start: "top 7%",
+          end: "+=120%",
+          scrub: 1.2,
+          pin: imgBoxRef.current,
           anticipatePin: 1,
-          onUpdate: (self) => {
-            if (text) {
-              // نمایش نوشته دقیقاً از شروع اسکرول (progress > 0.01)
-              gsap.to(text, {
-                opacity: self.progress > 0.01 ? 1 : 0,
-                duration: 0.15,
-                ease: "power1.inOut",
-                overwrite: true,
-              });
-            }
-          },
-          onLeaveBack: () => {
-            if (text) {
-              gsap.to(text, {
-                opacity: 0,
-                duration: 0.5,
-                ease: "expo.inOut",
-                overwrite: true,
-              });
-            }
-          },
         },
-        ease: "expo.out",
-      }
-    );
+      });
+
+      // Scale image
+      tl.fromTo(
+        imgBoxRef.current,
+        { scale: 0.5 },
+        { scale: 1.2, ease: "none" }
+      );
+
+      // Fade-in text
+      tl.fromTo(
+        textRef.current,
+        { opacity: 0.5, y: 40 },
+        { opacity: 1, y: 0, ease: "power2.out" },
+        "-=0.4"
+      );
+    });
+
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -67,8 +55,8 @@ const Descriptions = () => {
       <Box
         ref={imgBoxRef}
         sx={{
-          width: "60vw",
-          height: "60vh",
+          width: "50vw",
+          height: "50vh",
           margin: "0 auto",
           borderRadius: 10,
           backgroundImage: `url(${descriptionsWallpaper})`,
@@ -79,23 +67,18 @@ const Descriptions = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          overflow: "hidden",
         }}
       >
         <Box
-          display={"flex"}
-          flexDirection={"column"}
-          alignContent={"center"}
-          alignItems={"center"}
           ref={textRef}
-          style={{
+          sx={{
             position: "absolute",
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            width: "100%",
             zIndex: 2,
             opacity: 0,
-            transition: "opacity 0.5s",
           }}
         >
           <NavLink
@@ -114,9 +97,6 @@ const Descriptions = () => {
               <Typography variant="h3" p={3} textAlign={"center"}>
                 خدمات دیجیتال
               </Typography>
-              {/* <Button  size="small" variant="text" color="success">
-            بیشتر بدانید
-          </Button> */}
             </Box>
           </NavLink>
         </Box>
