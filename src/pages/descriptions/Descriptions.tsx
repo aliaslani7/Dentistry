@@ -3,6 +3,7 @@ import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import descriptionsWallpaper from "../../assets/images/Descriptions.jpg";
+import { NavLink } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,7 +26,7 @@ const Descriptions = () => {
         scale: 1.2,
         scrollTrigger: {
           trigger: section,
-          start: "top 10%",
+          start: "top 2%",
           end: "+=60%",
           scrub: 2,
           pin: img,
@@ -60,7 +61,7 @@ const Descriptions = () => {
   return (
     <Box
       ref={sectionRef}
-      pt={20}
+      py={20}
       sx={{ position: "relative", minHeight: "120vh" }}
     >
       <Box
@@ -97,22 +98,27 @@ const Descriptions = () => {
             transition: "opacity 0.5s",
           }}
         >
-          <Box
-            textAlign={"center"}
-            sx={{
-              background: "rgba(255,255,255,0.35)",
-              backdropFilter: "blur(8px)",
-              borderRadius: 4,
-              boxShadow: "0 4px 24px rgba(0,0,0,0.08)",
-            }}
+          <NavLink
+            to="/about"
+            style={{ textDecoration: "none", color: "inherit" }}
           >
-            <Typography variant="h3" p={3} textAlign={"center"}>
-              خدمات دیجیتال
-            </Typography>
-            {/* <Button  size="small" variant="text" color="success">
+            <Box
+              textAlign={"center"}
+              sx={{
+                background: "rgba(255,255,255,0.35)",
+                backdropFilter: "blur(8px)",
+                borderRadius: 4,
+                boxShadow: "0 4px 24px rgba(0,0,0,0.08)",
+              }}
+            >
+              <Typography variant="h3" p={3} textAlign={"center"}>
+                خدمات دیجیتال
+              </Typography>
+              {/* <Button  size="small" variant="text" color="success">
             بیشتر بدانید
           </Button> */}
-          </Box>
+            </Box>
+          </NavLink>
         </Box>
       </Box>
     </Box>

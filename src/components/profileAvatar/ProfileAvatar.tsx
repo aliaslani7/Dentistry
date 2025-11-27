@@ -10,6 +10,7 @@ import {
 import PersonIcon from "@mui/icons-material/Person";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const ProfileAvatar = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -38,12 +39,21 @@ const ProfileAvatar = () => {
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
         transformOrigin={{ vertical: "top", horizontal: "right" }}
       >
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <PersonIcon fontSize="small" />
-          </ListItemIcon>
-          پروفایل من
-        </MenuItem>
+        <NavLink
+          to="/dashboard"
+          style={{
+            textDecoration: "none",
+            color: "inherit",
+            display: "block",
+          }}
+        >
+          <MenuItem onClick={handleClose} sx={{ fontSize: 13, minHeight: 32 }}>
+            <ListItemIcon sx={{ minWidth: 32 }}>
+              <PersonIcon fontSize="small" />
+            </ListItemIcon>
+            <span style={{ fontSize: 13 }}>پروفایل من</span>
+          </MenuItem>
+        </NavLink>
         <MenuItem onClick={handleClose}>
           <ListItemIcon>
             <LogoutIcon fontSize="small" />

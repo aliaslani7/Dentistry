@@ -17,6 +17,7 @@ import { useRef, useState } from "react";
 import { useEffect } from "react";
 import ThemeToggleSwitch from "../themeToggleSwitch/ThemeToggleSwitch";
 import ProfileAvatar from "../profileAvatar/ProfileAvatar";
+import { NavLink } from "react-router-dom";
 
 interface headerItemsType {
   id: number;
@@ -114,9 +115,11 @@ const Header = () => {
       >
         {/* logo */}
         <Box display={"flex"} gap={2} sx={{ userSelect: "none" }}>
-          <Typography variant="h6" fontWeight={700}>
-            Dentistry
-          </Typography>
+          <NavLink to="/" style={{ textDecoration: "none", color: "inherit" }}>
+            <Typography variant="h6" fontWeight={700}>
+              Dentistry
+            </Typography>
+          </NavLink>
           {!isMobile && (
             <Divider orientation="vertical" flexItem sx={{ borderWidth: 1 }} />
           )}
