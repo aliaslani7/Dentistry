@@ -16,6 +16,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { useRef, useState } from "react";
 import { useEffect } from "react";
 import ThemeToggleSwitch from "../themeToggleSwitch/ThemeToggleSwitch";
+import ProfileAvatar from "../profileAvatar/ProfileAvatar";
 
 interface headerItemsType {
   id: number;
@@ -139,7 +140,7 @@ const Header = () => {
                 ) {
                   gsap.to(window, {
                     scrollTo: {
-                      y: window.__sectionRefs[item.link].offsetTop,
+                      y: window.__sectionRefs[item.link]?.offsetTop || 0,
                       autoKill: true,
                     },
                     duration: 1.5,
@@ -174,13 +175,14 @@ const Header = () => {
           ))}
       </Box>
 
-      <Box display="flex" alignItems="center" gap={1}>
+      <Box py={2} display="flex" alignItems="center" gap={1}>
         <ThemeToggleSwitch />
         {isMobile && (
           <IconButton onClick={toggleDrawer(true)} color="inherit">
             <MenuIcon />
           </IconButton>
         )}
+        <ProfileAvatar />
       </Box>
 
       {/* Mobile Drawer */}

@@ -25,7 +25,7 @@ const Descriptions = () => {
         scale: 1.2,
         scrollTrigger: {
           trigger: section,
-          start: "top 20%",
+          start: "top 10%",
           end: "+=60%",
           scrub: 2,
           pin: img,
@@ -60,7 +60,7 @@ const Descriptions = () => {
   return (
     <Box
       ref={sectionRef}
-      pt={5}
+      pt={20}
       sx={{ position: "relative", minHeight: "120vh" }}
     >
       <Box
