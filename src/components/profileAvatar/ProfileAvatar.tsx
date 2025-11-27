@@ -27,7 +27,7 @@ const ProfileAvatar = () => {
     <Box>
       <Tooltip title="پروفایل">
         <IconButton onClick={handleAvatarClick} size="small" sx={{ p: 0 }}>
-          <Avatar />
+          <Avatar sx={{ width: 28, height: 28 }} />
         </IconButton>
       </Tooltip>
       <Menu
@@ -38,17 +38,17 @@ const ProfileAvatar = () => {
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
         transformOrigin={{ vertical: "top", horizontal: "right" }}
       >
-        <MenuItem onClick={handleClose} sx={{ fontSize: 13, minHeight: 32 }}>
-          <ListItemIcon sx={{ minWidth: 32 }}>
+        <MenuItem onClick={handleClose}>
+          <ListItemIcon>
             <PersonIcon fontSize="small" />
           </ListItemIcon>
-          <span style={{ fontSize: 13 }}>پروفایل من</span>
+          پروفایل من
         </MenuItem>
-        <MenuItem onClick={handleClose} sx={{ fontSize: 13, minHeight: 32 }}>
-          <ListItemIcon sx={{ minWidth: 32 }}>
+        <MenuItem onClick={handleClose}>
+          <ListItemIcon>
             <LogoutIcon fontSize="small" />
           </ListItemIcon>
-          <span style={{ fontSize: 13 }}>خروج</span>
+          خروج
         </MenuItem>
       </Menu>
     </Box>
