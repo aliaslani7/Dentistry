@@ -1,20 +1,40 @@
+// تعریف global برای window.__sectionRefs جهت رفع خطای TypeScript
+declare global {
+  interface Window {
+    __sectionRefs?: { [key: string]: HTMLElement | null };
+  }
+}
 import { Box, Typography } from "@mui/material";
+import BackToTop from "../components/BackToTop";
 import Cards from "../pages/cards/Cards";
 import Hero from "../pages/hero/Hero";
 import AboutMe from "../pages/aboutMe/AboutMe";
 import Footer from "../components/footer/Footer";
 import ReservationForm from "../components/footer/reservationForm/ReservationForm";
 import { useRef } from "react";
-import { useGsapBgColorOnScroll } from "../pages/cards/useGsapBgColorOnScroll";
-import { teal } from "@mui/material/colors";
+// import { useGsapBgColorOnScroll } from "../pages/cards/useGsapBgColorOnScroll";
+// import { grey, teal } from "@mui/material/colors";
 
+import { useEffect } from "react";
 const HomePage = () => {
+  const homeSectionRef = useRef<HTMLDivElement>(null);
   const cardsSectionRef = useRef<HTMLDivElement>(null);
-  useGsapBgColorOnScroll(cardsSectionRef, teal[900], "");
+  const aboutSectionRef = useRef<HTMLDivElement>(null);
+  const contactSectionRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.__sectionRefs = window.__sectionRefs || {};
+      window.__sectionRefs["home"] = homeSectionRef.current;
+      window.__sectionRefs["services"] = cardsSectionRef.current;
+      window.__sectionRefs["about"] = aboutSectionRef.current;
+      window.__sectionRefs["contact"] = contactSectionRef.current;
+    }
+  }, []);
+  // useGsapBgColorOnScroll(cardsSectionRef, grey[900], "");
   return (
     <Box>
       {/* Hero Section */}
-      <Box sx={{ minHeight: "100vh" }}>
+      <Box ref={homeSectionRef} sx={{ minHeight: "100vh" }}>
         <Hero />
       </Box>
       {/* خدمات */}
@@ -22,19 +42,21 @@ const HomePage = () => {
         <Cards />
       </Box>
       {/* درباره */}
-      <Box sx={{ minHeight: "100vh", py: 4 }}>
+      <Box ref={aboutSectionRef} sx={{ minHeight: "100vh", py: 4 }}>
         <Typography variant="h3" sx={{ textAlign: "-moz-left", mb: 4 }}>
           درباره ما
         </Typography>
         <AboutMe />
       </Box>
 
-      <Box>
+      <Box ref={contactSectionRef}>
         <ReservationForm />
       </Box>
       <Box pt={10}>
         <Footer />
       </Box>
+
+      <BackToTop />
     </Box>
   );
 };

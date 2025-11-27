@@ -12,7 +12,9 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import gsap from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { useRef, useState } from "react";
+import { useEffect } from "react";
 import ThemeToggleSwitch from "../themeToggleSwitch/ThemeToggleSwitch";
 
 interface headerItemsType {
@@ -22,13 +24,19 @@ interface headerItemsType {
 }
 
 const headerItems: headerItemsType[] = [
-  { id: 1, title: "صفحه اصلی" },
-  { id: 2, title: "خدمات" },
-  { id: 3, title: "درباره ما" },
-  { id: 4, title: "ارتباط با ما" },
+  { id: 1, title: "صفحه اصلی", link: "home" },
+  { id: 2, title: "خدمات", link: "services" },
+  { id: 3, title: "درباره ما", link: "about" },
+  { id: 4, title: "ارتباط با ما", link: "contact" },
 ];
 
+gsap.registerPlugin(ScrollToPlugin);
+
 const Header = () => {
+  // برای ارتباط با بخش‌ها
+  useEffect(() => {
+    window.__sectionRefs = window.__sectionRefs || {};
+  }, []);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -123,6 +131,22 @@ const Header = () => {
               }}
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={() => handleMouseLeave(index)}
+              onClick={() => {
+                if (
+                  item.link &&
+                  window.__sectionRefs &&
+                  window.__sectionRefs[item.link]
+                ) {
+                  gsap.to(window, {
+                    scrollTo: {
+                      y: window.__sectionRefs[item.link].offsetTop,
+                      autoKill: true,
+                    },
+                    duration: 1.5,
+                    ease: "power1.inOut",
+                  });
+                }
+              }}
               sx={{
                 userSelect: "none",
                 position: "relative",

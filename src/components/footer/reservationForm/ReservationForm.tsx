@@ -2,8 +2,8 @@ import { Box, Button, TextField } from "@mui/material";
 
 const ReservationForm = () => {
   return (
-    <Box >
-      <Box display={"flex"} gap={2}>
+    <Box  p={7}>
+      <Box  display={"flex"} gap={2}>
         <TextField
           size="small"
           label="نام"
