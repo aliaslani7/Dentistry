@@ -10,6 +10,8 @@ import {
 import PersonIcon from "@mui/icons-material/Person";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useState } from "react";
+import { useTheme } from "@mui/material/styles";
+import { useThemeMode } from "../../provider/ThemeProvider";
 import { NavLink } from "react-router-dom";
 
 const ProfileAvatar = () => {
@@ -24,11 +26,14 @@ const ProfileAvatar = () => {
     setAnchorEl(null);
   };
 
+  const theme = useTheme();
+  const { mode } = useThemeMode();
+  const palette = theme.palette.customPaletteColors[mode];
   return (
     <Box>
       <Tooltip title="پروفایل">
         <IconButton onClick={handleAvatarClick} size="small" sx={{ p: 0 }}>
-          <Avatar sx={{ width: 28, height: 28 }} />
+          <Avatar sx={{ width: 28, height: 28, bgcolor: palette.header.headerIcon }} />
         </IconButton>
       </Tooltip>
       <Menu
