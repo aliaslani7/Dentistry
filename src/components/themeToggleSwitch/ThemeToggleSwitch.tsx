@@ -5,21 +5,20 @@ import { useThemeMode } from "../../provider/ThemeProvider";
 import { useTheme } from "@mui/material/styles";
 
 const ThemeToggleSwitch = () => {
-  const { mode, toggleTheme } = useThemeMode();
+  const { toggleTheme } = useThemeMode();
   const theme = useTheme();
-  const palette = theme.palette.customPaletteColors[mode];
   return (
     <IconButton onClick={toggleTheme} color="inherit">
-      {mode === "dark" ? (
+      {theme.palette.mode === "dark" ? (
         <Brightness7
           sx={{
-            color: palette.header.headerIcon,
+            color: theme.palette.customPaletteColors.header.headerIcon,
           }}
         />
       ) : (
         <Brightness4
           sx={{
-            color: palette.header.headerIcon,
+            color: theme.palette.customPaletteColors.header.headerIcon,
           }}
         />
       )}

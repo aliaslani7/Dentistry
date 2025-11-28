@@ -17,6 +17,7 @@ import { useRef } from "react";
 
 import { useEffect } from "react";
 import Descriptions from "../pages/descriptions/Descriptions";
+import AccordionDescription from "../components/accordion/AccordionDescription";
 const HomePage = () => {
   const homeSectionRef = useRef<HTMLDivElement>(null);
   const cardsSectionRef = useRef<HTMLDivElement>(null);
@@ -49,6 +50,7 @@ const HomePage = () => {
         </Typography>
         <AboutMe />
         <Descriptions/>
+        <AccordionDescription/>
       </Box>
 
       <Box ref={contactSectionRef}>
