@@ -1,0 +1,70 @@
+import {
+  Avatar,
+  Box,
+  Menu,
+  MenuItem,
+  IconButton,
+  ListItemIcon,
+  Tooltip,
+} from "@mui/material";
+import PersonIcon from "@mui/icons-material/Person";
+import LogoutIcon from "@mui/icons-material/Logout";
+import { useState } from "react";
+import { useTheme } from "@mui/material/styles";
+import { NavLink } from "react-router-dom";
+
+const ProfileAvatar = () => {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+
+  const handleAvatarClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const theme = useTheme();
+  return (
+    <Box>
+      <Tooltip title="پروفایل">
+        <IconButton onClick={handleAvatarClick} size="small" sx={{ p: 0 }}>
+          <Avatar sx={{ width: 28, height: 28, bgcolor: theme.palette.customPaletteColors.header.headerIcon }} />
+        </IconButton>
+      </Tooltip>
+      <Menu
+        id="profileMenu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        transformOrigin={{ vertical: "top", horizontal: "right" }}
+      >
+        <NavLink
+          to="/dashboard"
+          style={{
+            textDecoration: "none",
+            color: "inherit",
+            display: "block",
+          }}
+        >
+          <MenuItem onClick={handleClose} sx={{ fontSize: 13, minHeight: 32 }}>
+            <ListItemIcon sx={{ minWidth: 32 }}>
+              <PersonIcon fontSize="small" />
+            </ListItemIcon>
+            <span style={{ fontSize: 13 }}>پروفایل من</span>
+          </MenuItem>
+        </NavLink>
+        <MenuItem onClick={handleClose}>
+          <ListItemIcon>
+            <LogoutIcon fontSize="small" />
+          </ListItemIcon>
+          خروج
+        </MenuItem>
+      </Menu>
+    </Box>
+  );
+};
+
+export default ProfileAvatar;

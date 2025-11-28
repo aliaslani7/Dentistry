@@ -1,13 +1,17 @@
-// --- Add custom palette type for footerBg ---
+// --- Add custom palette type for footerBg and customPaletteColors ---
+import type { themeModePaletteType } from "../theme/paletteDataType";
 declare module "@mui/material/styles" {
   interface Palette {
     footerBg: string;
+    customPaletteColors: themeModePaletteType;
   }
   interface PaletteOptions {
     footerBg?: string;
+    customPaletteColors?: themeModePaletteType;
   }
 }
 import { createContext, useContext, useMemo, useState } from "react";
+import { customPaletteColors } from "../theme/customPalette";
 import type { ReactNode } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CacheProvider } from "@emotion/react";
@@ -59,6 +63,7 @@ export const ThemeModeProvider = ({ children }: ThemeModeProviderProps) => {
         palette: {
           mode,
           footerBg: mode === "dark" ? grey[900] : grey[100],
+          customPaletteColors: customPaletteColors[mode],
         },
         typography: {
           fontFamily: "'IRANSans', sans-serif",

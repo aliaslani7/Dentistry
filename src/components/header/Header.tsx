@@ -12,8 +12,12 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import gsap from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { useRef, useState } from "react";
+import { useEffect } from "react";
 import ThemeToggleSwitch from "../themeToggleSwitch/ThemeToggleSwitch";
+import ProfileAvatar from "../profileAvatar/ProfileAvatar";
+import { NavLink } from "react-router-dom";
 
 interface headerItemsType {
   id: number;
@@ -22,13 +26,19 @@ interface headerItemsType {
 }
 
 const headerItems: headerItemsType[] = [
-  { id: 1, title: "صفحه اصلی" },
-  { id: 2, title: "خدمات" },
-  { id: 3, title: "درباره ما" },
-  { id: 4, title: "ارتباط با ما" },
+  { id: 1, title: "صفحه اصلی", link: "home" },
+  { id: 2, title: "خدمات", link: "services" },
+  { id: 3, title: "درباره ما", link: "about" },
+  { id: 4, title: "ارتباط با ما", link: "contact" },
 ];
 
+gsap.registerPlugin(ScrollToPlugin);
+
 const Header = () => {
+  // برای ارتباط با بخش‌ها
+  useEffect(() => {
+    window.__sectionRefs = window.__sectionRefs || {};
+  }, []);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -105,9 +115,11 @@ const Header = () => {
       >
         {/* logo */}
         <Box display={"flex"} gap={2} sx={{ userSelect: "none" }}>
-          <Typography variant="h6" fontWeight={700}>
-            Dentistry
-          </Typography>
+          <NavLink to="/" style={{ textDecoration: "none", color: "inherit" }}>
+            <Typography variant="h6" fontWeight={700}>
+              Dentistry
+            </Typography>
+          </NavLink>
           {!isMobile && (
             <Divider orientation="vertical" flexItem sx={{ borderWidth: 1 }} />
           )}
@@ -123,6 +135,22 @@ const Header = () => {
               }}
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={() => handleMouseLeave(index)}
+              onClick={() => {
+                if (
+                  item.link &&
+                  window.__sectionRefs &&
+                  window.__sectionRefs[item.link]
+                ) {
+                  gsap.to(window, {
+                    scrollTo: {
+                      y: window.__sectionRefs[item.link]?.offsetTop || 0,
+                      autoKill: true,
+                    },
+                    duration: 1.5,
+                    ease: "power1.inOut",
+                  });
+                }
+              }}
               sx={{
                 userSelect: "none",
                 position: "relative",
@@ -150,13 +178,14 @@ const Header = () => {
           ))}
       </Box>
 
-      <Box display="flex" alignItems="center" gap={1}>
+      <Box py={2} display="flex" alignItems="center" gap={1}>
         <ThemeToggleSwitch />
         {isMobile && (
           <IconButton onClick={toggleDrawer(true)} color="inherit">
             <MenuIcon />
           </IconButton>
         )}
+        <ProfileAvatar />
       </Box>
 
       {/* Mobile Drawer */}
