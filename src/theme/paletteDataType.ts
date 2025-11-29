@@ -1,18 +1,17 @@
-
 export interface headerPaletteType {
   headerIcon: string;
   headerText: string;
   headerBackground: string;
 }
 
-export interface modalPaletteType {
-  main: string;
+export interface accordionPaletteType {
+  descriptionBG: string;
   background: string;
 }
 
 export interface themeModePaletteType {
   header: headerPaletteType;
-  modal: modalPaletteType;
+  accordion: accordionPaletteType;
 }
 
 export interface customPaletteType {

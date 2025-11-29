@@ -1,4 +1,3 @@
-// تعریف global برای window.__sectionRefs جهت رفع خطای TypeScript
 declare global {
   interface Window {
     __sectionRefs?: { [key: string]: HTMLElement | null };
@@ -18,6 +17,7 @@ import { useRef } from "react";
 import { useEffect } from "react";
 import Descriptions from "../pages/descriptions/Descriptions";
 import AccordionDescription from "../components/accordion/AccordionDescription";
+import ListDrawer from "../components/listBlog/drawer/Listdrawer";
 const HomePage = () => {
   const homeSectionRef = useRef<HTMLDivElement>(null);
   const cardsSectionRef = useRef<HTMLDivElement>(null);
@@ -49,8 +49,11 @@ const HomePage = () => {
           درباره ما
         </Typography>
         <AboutMe />
-        <Descriptions/>
-        <AccordionDescription/>
+        <Descriptions />
+        <Box>
+          <ListDrawer />
+        </Box>
+        <AccordionDescription />
       </Box>
 
       <Box ref={contactSectionRef}>

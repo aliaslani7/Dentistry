@@ -8,8 +8,8 @@ export const customPaletteColors: customPaletteType = {
       headerText: "#FFFFFF",
       headerBackground: "#1976d2",
     },
-    modal: {
-      main: grey[900],
+    accordion: {
+      descriptionBG: grey[800],
       background: grey[800],
     },
   },
@@ -19,8 +19,8 @@ export const customPaletteColors: customPaletteType = {
       headerText: "#1976d2",
       headerBackground: "#FFFFFF",
     },
-    modal: {
-      main: grey[100],
+    accordion: {
+      descriptionBG: grey[100],
       background: grey[50],
     },
   },
