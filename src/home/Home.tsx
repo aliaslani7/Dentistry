@@ -18,6 +18,7 @@ import { useRef } from "react";
 import { useEffect } from "react";
 import Descriptions from "../pages/descriptions/Descriptions";
 import AccordionDescription from "../components/accordion/AccordionDescription";
+import Lists from "../components/listBlog/ListBlogData";
 const HomePage = () => {
   const homeSectionRef = useRef<HTMLDivElement>(null);
   const cardsSectionRef = useRef<HTMLDivElement>(null);
@@ -49,8 +50,11 @@ const HomePage = () => {
           درباره ما
         </Typography>
         <AboutMe />
-        <Descriptions/>
-        <AccordionDescription/>
+        <Descriptions />
+        <AccordionDescription />
+      </Box>
+      <Box>
+        <Lists />
       </Box>
 
       <Box ref={contactSectionRef}>
