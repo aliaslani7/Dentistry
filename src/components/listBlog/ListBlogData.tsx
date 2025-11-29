@@ -20,7 +20,7 @@ const Lists = () => {
 
   return (
     <Box display={"flex"} flexDirection={"column"} alignItems={"center"} p={2}>
-      <Typography>لیست مقالات دندانپزشکی</Typography>
+      <Typography variant="h4" p={3}>آخرین مقالات دندانپزشکی</Typography>
       <Box
         width={1500}
         displayPrint={"flex"}

@@ -1,4 +1,3 @@
-// تعریف global برای window.__sectionRefs جهت رفع خطای TypeScript
 declare global {
   interface Window {
     __sectionRefs?: { [key: string]: HTMLElement | null };

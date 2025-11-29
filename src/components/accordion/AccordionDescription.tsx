@@ -19,6 +19,7 @@ const AccordionDescription = () => {
   const theme = useTheme();
   return (
     <Box>
+      <Typography variant="h3" gutterBottom p={2}>پرسش‌های متداول</Typography>
       {accordionData.map((item) => {
         const panelId = `panel${item.id}`;
         return (

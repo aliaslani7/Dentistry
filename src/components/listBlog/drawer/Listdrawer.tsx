@@ -9,8 +9,18 @@ const ListDrawer = () => {
     setOpen(newOpen);
   };
   return (
-    <Box>
-      <Button onClick={toggleDrawer(true)}>مقالات</Button>
+    <Box textAlign={"center"} my={4}>
+      <Box display="flex" justifyContent="center" alignItems="center" width="100%">
+        <Button
+          size="large"
+          variant="contained"
+          onClick={toggleDrawer(true)}
+          fullWidth
+          sx={{ maxWidth: "600px" }} // حداکثر عرض دلخواه
+        >
+          دانشنامه دندانپزشکی
+        </Button>
+      </Box>
       <Drawer anchor="bottom" open={open} onClose={toggleDrawer(false)}>
         <Lists />
       </Drawer>
