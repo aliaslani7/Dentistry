@@ -44,7 +44,7 @@ const Lists = () => {
             minWidth={200}
             height={idx === 3 ? 450 : 400}
             minHeight={idx === 3 ? 450 : 400}
-            bgcolor={grey[200]}
+            bgcolor={grey[800]}
             textAlign={"start"}
             display={"flex"}
             flexDirection={"column"}
