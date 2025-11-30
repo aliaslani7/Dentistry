@@ -55,30 +55,6 @@ const Lists = () => {
         gap={4}
         pt={5}
         pb={3}
-        // sx={{
-        //   overflowX: "hidden",
-        //   scrollbarWidth: "thin",
-        //   borderRadius: 8,
-        //   py: 5,
-        //   position: "relative",
-        //   "::before": {
-        //     content: '""',
-        //     position: "absolute",
-        //     top: 0,
-        //     left: 0,
-        //     width: "100%",
-        //     height: "100%",
-        //     borderRadius: 8,
-        //     zIndex: 0,
-        //     pointerEvents: "none",
-        //     animation: "borderGlow 5s linear infinite",
-        //   },
-        //   "@keyframes borderGlow": {
-        //     "0%": { boxShadow: "0 0 24px 0 #00c6ff44" },
-        //     "50%": { boxShadow: "0 0 48px 0 #00ffb444" },
-        //     "100%": { boxShadow: "0 0 24px 0 #00c6ff44" },
-        //   },
-        // }}
         onWheel={handleWheel}
       >
         {visibleItems.map((item, idx) => (
