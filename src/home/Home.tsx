@@ -18,6 +18,7 @@ import { useEffect } from "react";
 import Descriptions from "../pages/descriptions/Descriptions";
 import AccordionDescription from "../components/accordion/AccordionDescription";
 import ListDrawer from "../components/listBlog/drawer/Listdrawer";
+import BlogCards from "../pages/blog/Blogcards";
 const HomePage = () => {
   const theme = useTheme();
   const homeSectionRef = useRef<HTMLDivElement>(null);
@@ -91,6 +92,9 @@ const HomePage = () => {
             حرفه‌ای در دندانپزشکی باشد، انتخاب روش‌های دیجیتال بهترین گزینه برای
             اوست.
           </Typography>
+        </Box>
+        <Box>
+          <BlogCards />
         </Box>
         <Box>
           <ListDrawer />

@@ -9,12 +9,22 @@ export interface accordionPaletteType {
   background: string;
 }
 
+export interface blogPaletteType {
+  textBlog: string;
+  listBG: string;
+}
+
 export interface themeModePaletteType {
   header: headerPaletteType;
   accordion: accordionPaletteType;
+  blog: blogPaletteType;
 }
 
 export interface customPaletteType {
   dark: themeModePaletteType;
   light: themeModePaletteType;
+}
+export interface blogPaletteType {
+  textBlog: string;
+  listBG: string;
 }

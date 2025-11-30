@@ -12,6 +12,10 @@ export const customPaletteColors: customPaletteType = {
       descriptionBG: grey[800],
       background: grey[800],
     },
+    blog: {
+      textBlog: grey[900],
+      listBG: grey[900],
+    },
   },
   light: {
     header: {
@@ -22,6 +26,10 @@ export const customPaletteColors: customPaletteType = {
     accordion: {
       descriptionBG: grey[100],
       background: grey[50],
+    },
+    blog: {
+      textBlog: grey[900],
+      listBG: grey[100],
     },
   },
 };

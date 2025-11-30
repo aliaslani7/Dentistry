@@ -1,7 +1,9 @@
+
 export interface dataType {
   id: number;
   title: string;
   body: string;
+  image?: string;
 }
 
 export const listData: dataType[] = [
