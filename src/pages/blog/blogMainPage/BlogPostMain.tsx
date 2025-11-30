@@ -5,6 +5,7 @@ import {
   Link as MUILink,
   useTheme,
 } from "@mui/material";
+import { useEffect } from "react";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import UpdateIcon from "@mui/icons-material/Update";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
@@ -20,9 +21,12 @@ import {
   ListItemText,
 } from "@mui/material";
 
-const BlogPostMain = () => {
+const BlogMain = () => {
   const theme = useTheme();
   const { id } = useParams();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
   let post = null;
   let otherPosts = [];
   if (id) {
@@ -65,7 +69,7 @@ const BlogPostMain = () => {
                   }}
                 >
                   <CalendarMonthIcon sx={{ fontSize: 18, ml: 0.5 }} />
-                  انتشار: ۱۴۰۴/۸/۲۶
+                  انتشار: {post.date}
                 </Typography>
                 <Typography
                   sx={{
@@ -79,7 +83,7 @@ const BlogPostMain = () => {
                   }}
                 >
                   <UpdateIcon sx={{ fontSize: 18, ml: 0.5 }} />
-                  بروزرسانی: ۱۴۰۴/۹/۴
+                  بروزرسانی: {post.updated}
                 </Typography>
                 <Typography
                   sx={{
@@ -100,7 +104,7 @@ const BlogPostMain = () => {
               <Box>
                 <Typography
                   variant="body1"
-                  sx={{ mb: 2, color: "text.secondary" }}
+                  sx={{ m: 2, color: "text.secondary" }}
                 >
                   {post.body}
                 </Typography>
@@ -118,6 +122,12 @@ const BlogPostMain = () => {
                   />
                 </Box>
               )}
+              <Typography
+                variant="body1"
+                sx={{ m: 2, color: "text.secondary" }}
+              >
+                {post.description}
+              </Typography>
             </Box>
             <Box
               flex={1}
@@ -175,4 +185,4 @@ const BlogPostMain = () => {
   );
 };
 
-export default BlogPostMain;
+export default BlogMain;
