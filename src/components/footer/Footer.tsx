@@ -3,7 +3,7 @@ import SocialMedia from "./SocialMedia";
 
 const Footer = () => {
   return (
-    <Box>
+    <Box pt={20}>
       <Box>
         <Box textAlign={"center"}>
           <Typography>

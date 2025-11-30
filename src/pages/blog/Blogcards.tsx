@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import blogcardData from "./BlogData";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useLocation } from "react-router-dom";
 
 const BlogCards = () => {
   // Split cards into rows of three
@@ -18,11 +18,26 @@ const BlogCards = () => {
     rows.push(blogcardData.slice(i, i + 3));
   }
 
+  const location = useLocation();
+  const isBlogPage = location.pathname === "/blog";
   return (
     <Box pt={5}>
-      <Typography textAlign="center" variant="h3" sx={{ mb: 2 }}>
-        مقاله‌های تخصصی در حوزه ایمپلنت
-      </Typography>
+      <Box
+        display={"flex"}
+        justifyContent="space-between"
+        alignItems="center"
+        mb={4}
+        px={30}
+      >
+        <Typography textAlign="center" variant="h3" sx={{ mb: 2 }}>
+          مقاله‌های تخصصی در حوزه ایمپلنت
+        </Typography>
+        {!isBlogPage && (
+          <Button component={RouterLink} to="/blog">
+            نمایش بیشتر
+          </Button>
+        )}
+      </Box>
 
       {rows.map((row, rowIndex) => (
         <Box

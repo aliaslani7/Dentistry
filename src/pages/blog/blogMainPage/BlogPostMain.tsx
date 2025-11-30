@@ -20,7 +20,7 @@ import {
   ListItemText,
 } from "@mui/material";
 
-const BlogMain = () => {
+const BlogPostMain = () => {
   const theme = useTheme();
   const { id } = useParams();
   let post = null;
@@ -175,4 +175,4 @@ const BlogMain = () => {
   );
 };
 
-export default BlogMain;
+export default BlogPostMain;

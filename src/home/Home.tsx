@@ -8,7 +8,6 @@ import BackToTop from "../components/BackToTop";
 import Cards from "../pages/cards/Cards";
 import Hero from "../pages/hero/Hero";
 import AboutMe from "../pages/aboutMe/AboutMe";
-import Footer from "../components/footer/Footer";
 import ReservationForm from "../components/footer/reservationForm/ReservationForm";
 import { useRef } from "react";
 // import { useGsapBgColorOnScroll } from "../pages/cards/useGsapBgColorOnScroll";
@@ -103,9 +102,6 @@ const HomePage = () => {
       </Box>
       <Box ref={contactSectionRef}>
         <ReservationForm />
-      </Box>
-      <Box pt={10}>
-        <Footer />
       </Box>
       <BackToTop />
     </Box>

@@ -12,10 +12,33 @@
   box-sizing: border-box;
 }
 
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 body {
   font-family: "IRANSans", sans-serif;
   direction: rtl;
   padding: 10px;
   padding-right: 50px;
   padding-left: 50px;
+}
+
+.main-content {
+  flex: 1;
+}
+
+footer {
+  margin-top: auto;
 }
