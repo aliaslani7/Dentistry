@@ -65,6 +65,7 @@ const ReservationForm = () => {
               label="نوع خدمت"
               size="small"
               margin="normal"
+              placeholder="+"
             />
           )}
           fullWidth

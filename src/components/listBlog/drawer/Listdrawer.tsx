@@ -10,7 +10,13 @@ const ListDrawer = () => {
   };
   return (
     <Box textAlign={"center"} my={4}>
-      <Box display="flex" justifyContent="center" alignItems="center" width="100%">
+      <Box
+        display="flex"
+        flexDirection={"column"}
+        justifyContent="center"
+        alignItems="center"
+        width="100%"
+      >
         <Button
           size="large"
           variant="contained"
@@ -18,7 +24,7 @@ const ListDrawer = () => {
           fullWidth
           sx={{ maxWidth: "600px" }} // حداکثر عرض دلخواه
         >
-          دانشنامه دندانپزشکی
+          آخرین قیمت ایمپلنت
         </Button>
       </Box>
       <Drawer anchor="bottom" open={open} onClose={toggleDrawer(false)}>

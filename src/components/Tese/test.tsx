@@ -1,7 +1,6 @@
 import { Box, Typography } from "@mui/material";
-import { toPersianDigits } from "../farsiNevis/farsiNevis";
 import { useState } from "react";
-import { listData } from "./listData";
+import { listData } from "../listBlog/listData";
 
 const Lists = () => {
   const [centerIdx, setCenterIdx] = useState(3); // شروع از وسط 7تایی
@@ -178,7 +177,7 @@ const Lists = () => {
                 zIndex: 2,
               }}
             >
-              {toPersianDigits(item.price || "")}
+              {item.price}
               <br />
               <span
                 style={{
