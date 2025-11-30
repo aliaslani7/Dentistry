@@ -41,11 +41,11 @@ const BlogMain = () => {
       <Breadcrumbs aria-label="breadcrumb" sx={{ mb: 3 }}>
         <MUILink
           component={RouterLink}
-          to="/"
+          to="/blog"
           underline="hover"
           color="inherit"
         >
-          خانه
+          دانشنامه
         </MUILink>
         <Typography sx={{ color: "text.primary" }}>بلاگ</Typography>
       </Breadcrumbs>
