@@ -1,9 +1,26 @@
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, TextField, Autocomplete } from "@mui/material";
+
+type ServiceOption = { label: string; value: string };
+
+const serviceOptions: ServiceOption[] = [
+  { label: "ایمپلنت دندان", value: "implant" },
+  { label: "روکش دندان", value: "crown" },
+  { label: "عصب‌کشی (درمان ریشه)", value: "root-canal" },
+  { label: "لمینت دندان", value: "laminate" },
+  { label: "کامپوزیت دندان", value: "composite" },
+  { label: "جرم‌گیری و بروساژ", value: "scaling" },
+  { label: "ارتودنسی", value: "orthodontics" },
+  { label: "جراحی لثه", value: "gum-surgery" },
+  { label: "بلیچینگ (سفید کردن دندان)", value: "bleaching" },
+  { label: "ترمیم و پر کردن دندان", value: "filling" },
+  { label: "کشیدن دندان", value: "extraction" },
+  { label: "درمان دندان عقل", value: "wisdom-tooth" },
+];
 
 const ReservationForm = () => {
   return (
-    <Box  p={7}>
-      <Box  display={"flex"} gap={2}>
+    <Box p={7}>
+      <Box display={"flex"} gap={2}>
         <TextField
           size="small"
           label="نام"
@@ -36,22 +53,48 @@ const ReservationForm = () => {
         />
       </Box>
       <Box display={"flex"} gap={2}>
-        <TextField
-          select
-          size="small"
+        {/* Autocomplete چندانتخابی برای نوع خدمت */}
+        <Autocomplete
+          multiple
+          options={serviceOptions}
+          getOptionLabel={(option) => option.label}
+          isOptionEqualToValue={(option, value) => option.value === value.value}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="نوع خدمت"
+              size="small"
+              margin="normal"
+            />
+          )}
           fullWidth
-          //   label="نوع خدمت"
-          defaultValue=""
-          margin="normal"
-          SelectProps={{ displayEmpty: true }}
-        >
-          <option value="" disabled>
-            نوع خدمت
-          </option>
-          <option value="cleaning">تمیز کردن دندان</option>
-          <option value="filling">پر کردن دندان</option>
-          <option value="whitening">سفید کردن دندان</option>
-        </TextField>
+          sx={{
+            "& .MuiAutocomplete-inputRoot": {
+              cursor: "pointer",
+            },
+            "& .MuiChip-root": {
+              direction: "rtl",
+              display: "flex",
+              alignItems: "center",
+              height: 18,
+              minHeight: 18,
+              fontSize: "0.85rem",
+              borderRadius: 2,
+              padding: "0 2px",
+              ".MuiChip-label": {
+                paddingRight: "6px",
+                paddingLeft: "2px",
+                fontSize: "0.75em",
+              },
+              ".MuiChip-deleteIcon": {
+                marginRight: "0px",
+                marginLeft: "3px",
+                order: 1,
+                fontSize: "1.1em",
+              },
+            },
+          }}
+        />
         <TextField
           size="small"
           label="تاریخ"

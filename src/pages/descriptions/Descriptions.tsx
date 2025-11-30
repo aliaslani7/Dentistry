@@ -1,9 +1,8 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import descriptionsWallpaper from "../../assets/images/Descriptions.jpg";
-import { NavLink } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -80,26 +79,7 @@ const Descriptions = () => {
             zIndex: 2,
             opacity: 0,
           }}
-        >
-          <NavLink
-            to="/about"
-            style={{ textDecoration: "none", color: "inherit" }}
-          >
-            <Box
-              textAlign={"center"}
-              sx={{
-                background: "rgba(255,255,255,0.35)",
-                backdropFilter: "blur(8px)",
-                borderRadius: 4,
-                boxShadow: "0 4px 24px rgba(0,0,0,0.08)",
-              }}
-            >
-              <Typography variant="h3" p={3} textAlign={"center"}>
-                خدمات دیجیتال
-              </Typography>
-            </Box>
-          </NavLink>
-        </Box>
+        ></Box>
       </Box>
     </Box>
   );

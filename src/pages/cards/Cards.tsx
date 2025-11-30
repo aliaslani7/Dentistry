@@ -97,6 +97,21 @@ const Cards = () => {
           </Card>
         ))}
       </Box>
+      <Box
+        height={500}
+        display={"flex"}
+        alignItems="center"
+        justifyContent="center"
+        mt={4}
+        gap={2}
+      >
+        <Typography variant="h2">
+          تجربه‌ای شیرین و بدون درد از ایمپلنت درمرکز
+        </Typography>
+        <Typography color="primary" variant="h2">
+           ایران
+        </Typography>
+      </Box>
     </Box>
   );
 };
